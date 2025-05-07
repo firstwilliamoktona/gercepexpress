@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gerak Cepat Express - Jasa Kurir Terpercaya</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans&display=swap');
+
+  /* Reset */
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    background: linear-gradient(135deg, #000000, #0a3d62);
+    color: #e0f0ff;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-attachment: fixed;
+    scroll-padding-top: 70px; /* to offset fixed header when using anchor */
+  }
+
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 900px;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 2px solid #1e90ff;
+    padding: 0.9rem 1rem;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: #1e90ff;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-shadow: 0 0 8px #1e90ffcc;
+    user-select: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.3rem;
+  }
+
+  nav a {
+    color: #a0c4ffcc;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    background-color: #1e90ffcc;
+    color: white;
+    outline: none;
+  }
+
+  /* Container below header */
+  .container {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 70px; /* height of header + spacing */
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    scroll-behavior: smooth;
+  }
+
+  /* ... (rest of styles remain unchanged, just copy from previous full responsive and animated code) */
+
+  h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #1e90ff;
+    text-shadow: 0 0 8px #1e90ffcc;
+  }
+
+  h1 {
+    font-size: 3rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #1e90ff88;
+    padding-bottom: 0.4rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #a0c4ffee;
+    text-shadow: 0 0 5px #000000cc;
+    line-height: 1.6;
+  }
+
+  /* Hero Image */
+  #hero-image-wrapper {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 0 30px #1e90ffcc;
+    overflow: hidden;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  #hero-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* About Section */
+  #about {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
+  }
+  #about.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Our Couriers */
+  #couriers {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.9s ease 0.4s, transform 0.9s ease 0.4s;
+  }
+  #couriers.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .courier-card {
+    background: rgba(30, 144, 255, 0.2);
+    box-shadow: inset 0 0 16px #1e90ffaa;
+    border-radius: 16px;
+    width: 150px;
+    padding: 1rem 1rem 1.3rem;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    color: #d0e6ff;
+    text-shadow: 0 0 5px #000000cc;
+    filter: drop-shadow(0 0 0 transparent);
+    transition: background 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease, transform 0.3s ease;
+  }
+
+  .courier-card:hover,
+  .courier-card:focus-visible {
+    background: rgba(30, 144, 255, 0.45);
+    box-shadow: inset 0 0 22px #3ca0ffcc;
+    outline: none;
+    filter: drop-shadow(0 4px 6px #1e90ffbb);
+    transform: translateY(-6px);
+  }
+
+  .courier-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #1e90ffaa;
+    box-shadow: 0 0 14px #1e90ffbb;
+  }
+
+  .courier-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .courier-attr {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #a0c4ffee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+  .courier-attr i {
+    color: #1e90ff;
+  }
+
+  /* Testimonials */
+  #testimonials {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.9s ease 0.6s, transform 0.9s ease 0.6s;
+  }
+  #testimonials.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .testimonial-card {
+    background: rgba(30, 144, 255, 0.28);
+    border-radius: 18px;
+    padding: 1.3rem 1.5rem 1.6rem;
+    box-shadow: 0 0 28px #1e90ffaa inset;
+    font-style: italic;
+    position: relative;
+    font-size: 1rem;
+    color: #d0e6ff;
+    text-shadow: 0 0 6px #000000cc;
+  }
+
+  .testimonial-card::before {
+    content: '“';
+    font-size: 3.8rem;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    color: #3ca0ffcc;
+    font-family: serif;
+  }
+
+  .testimonial-text {
+    padding-left: 16px;
+    line-height: 1.6;
+  }
+
+  .testimonial-author {
+    margin-top: 0.8rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: right;
+  }
+
+  /* Location Section */
+  #location {
+    text-align: center;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.9s ease 0.8s, transform 0.9s ease 0.8s;
+  }
+  #location.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #location iframe {
+    border: none;
+    border-radius: 18px;
+    width: 100%;
+    height: 250px;
+    max-width: 700px;
+    box-shadow: 0 0 30px #3ca0ffdd;
+    transition: box-shadow 0.3s ease;
+  }
+  #location iframe:hover {
+    box-shadow: 0 0 40px #1e90ffee;
+  }
+
+  /* Call To Action Button */
+  .cta-btn {
+    background: #1e90ff;
+    border: none;
+    border-radius: 50px;
+    padding: 1.3rem 3.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 9px 26px #1761bfcc;
+    transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation: none !important;
+  }
+
+  .cta-btn:hover,
+  .cta-btn:focus {
+    background: #3ca0ff;
+    box-shadow: 0 11px 30px #3ca0ffdd;
+    outline: none;
+    transform: translateY(-4px);
+  }
+
+  /* Footer */
+  footer {
+    font-size: 1rem;
+    color: #7da7ffcc;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-shadow: 0 0 6px #000000bb;
+    margin-top: 2rem;
+  }
+
+  /* Scrollbar styling for container */
+  .container::-webkit-scrollbar {
+    width: 8px;
+  }
+  .container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .container::-webkit-scrollbar-thumb {
+    background-color: #1e90ffaa;
+    border-radius: 12px;
+  }
+
+  /* Responsive Typography & Layout */
+  @media (max-width: 720px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    h2 {
+      font-size: 1.7rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+    .courier-card {
+      width: 130px;
+    }
+    #location iframe {
+      height: 210px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 2.2rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+    .courier-card {
+      width: 110px;
+      padding: 0.9rem 0.8rem;
+    }
+    #location iframe {
+      height: 180px;
+    }
+    nav {
+      gap: 1rem;
+    }
+  }
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+ <br><br>
+
+  <h1>Gerak Cepat Express</h1>
+
+  <div class="container">
+    <div id="hero-image-wrapper" role="img" aria-label="Mobil kurir Gerak Cepat Express di jalan kota dengan latar belakang pemandangan kota malam hari">
+      <img src="banner.png" alt="Mobil kurir Gerak Cepat Express di jalan kota malam hari" />
+    </div>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">Tentang Kami</h2>
+      <p>Gerak Cepat Express adalah layanan kurir terpercaya yang mengutamakan kecepatan dan keamanan pengiriman paket Anda di Kota Dumai. Kami hadir untuk memberikan layanan terbaik bagi kebutuhan pengiriman Anda.</p>
+    </section>
+
+    <section id="couriers" aria-labelledby="couriers-title">
+      <h2 id="couriers-title">Kurir Kami</h2>
+      <article class="courier-card" tabindex="0">
+        <img src="profile.jpg" alt="Foto Kurir Andi" class="courier-photo" />
+        <div class="courier-name">William</div>
+        <div class="courier-attr"><i class="fa-solid fa-bolt"></i>memiliki pengalaman 3 tahun sebagai kurir. selalu bersikap ramah dan profesional.</div>
+      </article>
+   
+    </section>
+
+    <section id="testimonials" aria-labelledby="testi-title">
+      <h2 id="testi-title">Testimoni Pelanggan</h2>
+      <article class="testimonial-card" tabindex="0">
+        <p class="testimonial-text">Pelayanan sangat cepat dan ramah. Paket sampai tepat waktu dengan kondisi baik. Sangat direkomendasikan!</p>
+        <div class="testimonial-author">&mdash; Siti A.</div>
+      </article>
+      <article class="testimonial-card" tabindex="0">
+        <p class="testimonial-text">Kurirnya sangat profesional dan mudah diajak komunikasi. Membuat saya percaya untuk terus menggunakan jasa Gerak Cepat Express.</p>
+        <div class="testimonial-author">&mdash; Budi R.</div>
+      </article>
+    </section>
+
+    <section id="location" aria-labelledby="loc-title">
+      <h2 id="loc-title">Lokasi Kami</h2>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.119745741588!2d101.45801879999999!3d1.6719327000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d3af72abc5d603%3A0x23f494f6c2d11c4a!2sWilliam%20Website!5e0!3m2!1sid!2sid!4v1739708482872!5m2!1sid!2sid" width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+        aria-label="Peta lokasi Gerak Cepat Express di Yogyakarta, Indonesia"></iframe>
+    </section>
+
+   
+    <a class="cta-btn" aria-label="Pesan Sekarang" href="https://wa.me/+6282169178818" target="_blank" rel="noopener noreferrer">
+        Pesan Sekarang
+      </a>
+  </div>
+
+  <footer>
+    &copy; 2025 Gerak Cepat Express - Semua Hak Dilindungi
+  </footer>
+
+<script>
+  // Button click alert
+  const orderBtn = document.querySelector('.cta-btn');
+  orderBtn.addEventListener('click', () => {
+    alert('Terima kasih telah memilih Gerak Cepat Express! Fitur pemesanan segera hadir.');
+  });
+</script>
+</body>
+</html>
+</content>
+</create_file>
